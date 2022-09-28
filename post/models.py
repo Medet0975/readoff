@@ -23,8 +23,8 @@ class Books(models.Model):
     cat_id = models.ForeignKey('Category', on_delete=models.CASCADE, null=True)
 
     def get_absolute_url(self):
-        return reverse('shop:books_detail',
-                       args=[self.id, self.slug])
+        return reverse('books_detail',
+                       kwargs={'books_detail': self.slug})
 
     def __str__(self):
         return f'{self.name} -> {self.author}'
